@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Urban Population Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Urban Population Calculator</h2>
+
+    <p>Enter each city's population on a new line:</p>
+
+    <textarea id="populationInput" placeholder="500000&#10;1200000&#10;750000"></textarea>
+
+    <button onclick="calculatePopulation()">Calculate Total</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculatePopulation() {
+
+    let input = document.getElementById("populationInput").value;
+
+    let populations = input.split("\n");
+
+    let total = 0;
+
+    for(let i = 0; i < populations.length; i++) {
+        total += Number(populations[i]);
+    }
+
+    document.getElementById("result").innerHTML =
+        "Total Urban Population: " + total.toLocaleString();
+}
+</script>
+
+</body>
+</html>
